@@ -169,6 +169,7 @@ internal class BotWrapper private constructor(
 
     override suspend fun login() {
         logger.warning("Bot 已由 OneBot 进行管理，溢出核心不会进行登录操作")
+          return bot.also { it.eventDispatcher.broadcastAsync(BotOnlineEvent(bot))
     }
 
     @JvmBlockingBridge
